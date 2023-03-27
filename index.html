@@ -18,6 +18,16 @@
     }
 
     /* UI */
+    .topUI {
+        position: absolute;
+        z-index: 1000; /* need this cause clip-path changes stack context */
+        transform: translate(-50%, 25px);
+        text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+        letter-spacing: 2px;
+        color: #fff;
+        font-size: 17px;
+      }
+      
 </style>
 <body translate="no">
     <div id="game">
