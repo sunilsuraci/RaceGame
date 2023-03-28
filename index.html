@@ -330,6 +330,34 @@
         return obj[keys[(keys.length * Math.random()) << 0]];
       }
 
+
+      function drawQuad(element, layer, color, x1, y1, w1, x2, y2, w2) {
+        element.style.zIndex = layer;
+        element.style.background = color;
+        element.style.top = y2 + `px`;
+        element.style.left = x1 - w1 / 2 - w1 + `px`;
+        element.style.width = w1 * 3 + `px`;
+        element.style.height = y1 - y2 + `px`;
+
+        let leftOffset = w1 + x2 - x1 + Math.abs(w2 / 2 - w1 / 2);
+        element.style.clipPath = `polygon(${leftOffset}px 0, ${
+          leftOffset + w2
+        }px 0, 66.66% 100%, 33.33% 100%)`;
+      }
+
+      const KEYS = {};
+      const keyUpdate = (e) => {
+        KEYS[e.code] = e.type === `keydown`;
+        e.preventDefault();
+      };
+      addEventListener(`keydown`, keyUpdate);
+      addEventListener(`keyup`, keyUpdate);
+
+      function sleep(ms) {
+        return new Promise(function (resolve, reject) {
+          setTimeout((_) => resolve(), ms);
+        });
+      }
     </script>
 </body>
 </html>
