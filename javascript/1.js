@@ -54,4 +54,14 @@ window.HUB_EVENTS = {
     POST_SAVED: "POST_SAVED",
     PROCESSING_FINISH: "PROCESSING_FINISH",
     PROCESSING_START: "PROCESSED_STARTED"
-  },
+  },  "object" != typeof window.CP && (window.CP = {}), window.CP.PenTimer = {
+    programNoLongerBeingMonitored: !1,
+    timeOfFirstCallToShouldStopLoop: 0,
+    _loopExits: {},
+    _loopTimers: {},
+    START_MONITORING_AFTER: 2e3,
+    STOP_ALL_MONITORING_TIMEOUT: 5e3,
+    MAX_TIME_IN_LOOP_WO_EXIT: 2200,
+    exitedLoop: function (E) {
+      this._loopExits[E] = !0
+    },
